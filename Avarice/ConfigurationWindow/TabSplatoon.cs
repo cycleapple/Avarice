@@ -11,14 +11,14 @@ namespace Avarice.ConfigurationWindow
     {
         internal static void Draw()
         {
-            if(ImGui.Checkbox("Enable Splatoon IPC", ref P.config.SplatoonUnsafePixel))
+        if(ImGui.Checkbox("啟用 Splatoon IPC", ref P.config.SplatoonUnsafePixel))
             {
                 WriteRequest();
             }
-            ImGuiComponents.HelpMarker("Enables changing the colour of your Player Damage Pixel based on if your position is determined to be within the bounds of a preset configured as \"dangerous\".");
-            ImGui.ColorEdit4("Danger Pixel Colour", ref P.config.SplatoonPixelCol, ImGuiColorEditFlags.NoInputs);
-            ImGuiComponents.HelpMarker("The colour your Player Damage Pixel will change to if you are standing in a configured danger zone. You must have the Player Damage Pixel feature enabled for this to do anything.");
-            ImGuiEx.TextWrapped($"This feature will probably not function for any pre-6.5 presets as it specifically requires the preset author to apply the \"Dangerous\" attribute to the preset metadata for Avarice to read it. Additionally, you must enable this feature in Splatoon in General settings.");
+        ImGuiComponents.HelpMarker("依目前位置是否位於標記為「危險」的預設範圍內，變更玩家受傷判定點的色彩。");
+        ImGui.ColorEdit4("危險判定點色彩", ref P.config.SplatoonPixelCol, ImGuiColorEditFlags.NoInputs);
+        ImGuiComponents.HelpMarker("站在已設定的危險區域時，玩家受傷判定點將變更為此色彩。必須先啟用玩家受傷判定點功能。");
+        ImGuiEx.TextWrapped("6.5 以前的預設可能無法使用此功能，因為預設作者必須在中繼資料中加入「Dangerous」屬性供 Avarice 讀取。此外，也必須在 Splatoon 的一般設定中啟用此功能。");
         }
 
         internal static void WriteRequest()
