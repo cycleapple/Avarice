@@ -6,7 +6,7 @@ internal static class TabProfiles
 {
     internal static void Draw()
     {
-        ImGuiEx.Text("Current profile:");
+        ImGuiEx.Text("目前設定檔：");
         ImGui.SameLine();
         ImGuiEx.InputWithRightButtonsArea("CurrentProfiles", delegate
         {
@@ -24,11 +24,11 @@ internal static class TabProfiles
             }
         }, delegate
         {
-            if (ImGui.Button("Delete"))
+        if (ImGui.Button("刪除"))
             {
                 if (P.config.Profiles.Count == 1)
                 {
-                    Notify.Error("Last profile can not be removed");
+                Notify.Error("無法移除最後一個設定檔");
                 }
                 else
                 {
@@ -37,7 +37,7 @@ internal static class TabProfiles
                 }
             }
             ImGui.SameLine();
-            if (ImGui.Button("Add"))
+        if (ImGui.Button("新增"))
             {
                 var prof = new Profile();
                 P.config.Profiles.Add(prof);
@@ -49,11 +49,11 @@ internal static class TabProfiles
         {
             if (P.currentProfile.IsDefault)
             {
-                ImGuiEx.Text("This is default profile.");
+            ImGuiEx.Text("這是預設設定檔。");
             }
             else
             {
-                if (ImGui.SmallButton("Make this profile default"))
+            if (ImGui.SmallButton("設為預設設定檔"))
                 {
                     foreach (var x in P.config.Profiles)
                     {
@@ -64,7 +64,7 @@ internal static class TabProfiles
             }
         });
         ImGuiEx.SetNextItemFullWidth();
-        ImGui.InputTextWithHint("##namep", "Profile name...", ref P.currentProfile.Name, 100);
+        ImGui.InputTextWithHint("##namep", "設定檔名稱……", ref P.currentProfile.Name, 100);
 
         ImGuiHelpers.ScaledDummy(5f);
         BoxJob.DrawStretched();
@@ -74,7 +74,7 @@ internal static class TabProfiles
 
     static InfoBox BoxJob = new()
     {
-        Label = "Assign profiles to jobs",
+            Label = "將設定檔指派給職業",
         ContentsAction = delegate
         {
             foreach (var x in Svc.Data.GetExcelSheet<ClassJob>().Where(x => x.JobIndex > 0))
@@ -84,7 +84,7 @@ internal static class TabProfiles
                 ImGuiEx.SetNextItemFullWidth(-15);
                 if (ImGui.BeginCombo($"##sel{x.RowId}", P.GetProfileForJob(x.RowId)?.Name ?? "<unassigned>"))
                 {
-                    if (ImGui.Selectable("Unassign"))
+                    if (ImGui.Selectable("取消指派"))
                     {
                         P.config.JobProfiles.Remove(x.RowId);
                     }

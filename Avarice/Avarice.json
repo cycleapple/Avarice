@@ -2,10 +2,10 @@
   "Author": "кайт машина (Puni.sh)",
   "Name": "Avarice",
   "InternalName": "Avarice",
-  "Description": "Positional feedback with pixel perfect rear/flank tracking, range indicators, and more.",
-  "Punchline": "Positional feedback with pixel perfect rear/flank tracking, range indicators, and more.",
+  "Description": "提供精確的背面／側面身位追蹤、距離指示器與身位回饋。",
+  "Punchline": "精確的身位追蹤與戰鬥回饋。",
   "ApplicableVersion": "any",
-  "RepoUrl": "https://github.com/PunishXIV/Avarice",
+  "RepoUrl": "https://github.com/cycleapple/Avarice",
   "IconUrl": "https://love.puni.sh/resources/avarice.png",
     "Tags": [
         "combat"

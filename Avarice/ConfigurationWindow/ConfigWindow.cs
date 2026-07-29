@@ -6,7 +6,7 @@ namespace Avarice.ConfigurationWindow;
 internal unsafe partial class ConfigWindow : Window
 {
     internal const float SelectWidth = 200f;
-    public ConfigWindow() : base($"{P.Name} Configuration - {P.currentProfile.Name.Default("Unnamed profile")}###AvariceConfig")
+public ConfigWindow() : base($"{P.Name} 設定 - {P.currentProfile.Name.Default("未命名設定檔")}###AvariceConfig")
     {
         Size = new(640, 480);
         SizeCondition = ImGuiCond.FirstUseEver;
@@ -21,14 +21,14 @@ internal unsafe partial class ConfigWindow : Window
     public override void Draw()
     {
         ImGuiEx.EzTabBar("##tabbar",
-            ("Settings", TabSettings.Draw, null, true),
-            ("Anticipation", TabAnticipation.Draw, null, true),
-            ("Profiles", TabProfiles.Draw, null, true),
+        ("設定", TabSettings.Draw, null, true),
+        ("預判", TabAnticipation.Draw, null, true),
+        ("設定檔", TabProfiles.Draw, null, true),
             //("Tank middle", TabTank.Draw, null, true),
-            ("Statistics", TabStatistics.Draw, null, true),
-            ("About", delegate { PunishLib.ImGuiMethods.AboutTab.Draw(Svc.PluginInterface.InternalName); }, null, true),
-            (P.currentProfile.Debug ? "Log" : null, InternalLog.PrintImgui, null, false),
-            (P.currentProfile.Debug ? "Debug" : null, Debug, null, true)
+        ("統計", TabStatistics.Draw, null, true),
+        ("關於", delegate { PunishLib.ImGuiMethods.AboutTab.Draw(Svc.PluginInterface.InternalName); }, null, true),
+        (P.currentProfile.Debug ? "日誌" : null, InternalLog.PrintImgui, null, false),
+        (P.currentProfile.Debug ? "偵錯" : null, Debug, null, true)
         );
     }
 
