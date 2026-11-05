@@ -1,4 +1,4 @@
-﻿{
+{
   "Author": "кайт машина (Puni.sh)",
   "Name": "Avarice",
   "InternalName": "Avarice",
@@ -10,5 +10,5 @@
     "Tags": [
         "combat"
     ],
-    "DalamudApiLevel": 13
+    "DalamudApiLevel": 14
 }

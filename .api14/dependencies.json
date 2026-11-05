@@ -1,0 +1,14 @@
+[
+  {
+    "path": "ECommons",
+    "baseCommit": "dfcb78aefb95cd745c30e03840f10598da3958bc",
+    "patch": "patches/e347001520b30beb.patch",
+    "sha256": "b480660f7840274d75a0ea8c95995c8c2a133cb4cd6d427eb91fc37435884a88"
+  },
+  {
+    "path": "PunishLib",
+    "baseCommit": "f7ab98c6c2b96c83818434c420dd1134e42d5ca4",
+    "patch": "patches/0b680675a0e45218.patch",
+    "sha256": "1c257eb189d55efb72bfe6e2e047473dcd680b5bf9ee423f74c13c3bcc067544"
+  }
+]

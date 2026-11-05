@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.ClientState.JobGauge.Types;
+using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -11,7 +11,7 @@ namespace Avarice.Data
 	{
 		private const uint InvalidObjectID = 0xE000_0000;
 
-		private readonly ConcurrentDictionary<(uint StatusID, ulong? TargetID, ulong? SourceID), DalamudStatus.Status> statusCache = new();
+		private readonly ConcurrentDictionary<(uint StatusID, ulong? TargetID, ulong? SourceID), DalamudStatus.IStatus> statusCache = new();
 		private readonly ConcurrentDictionary<uint, CooldownData> cooldownCache = new();
 
 		private readonly ConcurrentDictionary<Type, JobGaugeBase> jobGaugeCache = new();
@@ -38,10 +38,10 @@ namespace Avarice.Data
 			return (T)gauge;
 		}
 
-		internal DalamudStatus.Status GetStatus(uint statusID, IGameObject obj, ulong? sourceID)
+		internal DalamudStatus.IStatus GetStatus(uint statusID, IGameObject obj, ulong? sourceID)
 		{
 			(uint statusID, ulong? GameObjectId, ulong? sourceID) key = (statusID, obj?.GameObjectId, sourceID);
-			if (statusCache.TryGetValue(key, out DalamudStatus.Status found))
+			if (statusCache.TryGetValue(key, out DalamudStatus.IStatus found))
 			{
 				return found;
 			}
@@ -56,7 +56,7 @@ namespace Avarice.Data
 				return statusCache[key] = null;
 			}
 
-			foreach (DalamudStatus.Status status in chara.StatusList)
+			foreach (DalamudStatus.IStatus status in chara.StatusList)
 			{
 				if (status.StatusId == statusID && (!sourceID.HasValue || status.SourceId == 0 || status.SourceId == InvalidObjectID || status.SourceId == sourceID))
 				{
